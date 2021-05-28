@@ -34,7 +34,8 @@ st.text("")
 
 #Import data file
 #LSTM
-df1 = pd.read_csv("household_power_consumption.txt",
+l1 = st.file_uploader("Upload CSV",type=["txt"])
+df1 = pd.read_csv(l1,
                   sep = ";" ,na_values = ["nan","?"],
                   parse_dates = {"dt" : ["Date","Time"]},
                   infer_datetime_format = True,
@@ -50,8 +51,8 @@ df1 = df1.fillna(df1.mean())
 
 
 
-
-df = pd.read_csv('file1.csv',parse_dates=['Date_Time'])
+data = st.file_uploader("Upload CSV",type=["csv"])
+df = pd.read_csv(data,parse_dates=['Date_Time'])
 df['Date_Time'] = pd.to_datetime(df['Date_Time'], errors='coerce')
 df.drop(df.columns[[0]], axis = 1, inplace = True)
 
